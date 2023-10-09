@@ -1,27 +1,30 @@
-let firstNum = '';
-let secondNum = '';
-let currentOperation = null;
-let shouldResetScreen = false;
+let firstOperand = ''
+let secondOperand = ''
+let currentOperation = null
+let shouldResetScreen = false
 
 const numberButtons = document.querySelectorAll('.num');
 const operatorButtons = document.querySelectorAll('.operator');
 const equalsButton = document.getElementById('equall')
 const clearButton = document.getElementById('clear');
-const deleteButton = document.getElementById('del');
+const deleteButton = document.getElementByIdr('del');
 const dotButton = document.getElementById('dot');
 const lastOperationScreen = document.getElementById('lastOperationScreen');
-const currentOperationScreen = document.getElementById('currentOperationScreen');
+const currentOperationScreen = document.getElementById('currentOperationSccreen');
 
 window.addEventListener('keydown', handleKeyboardInput)
 equalsButton.addEventListener('click', evaluate)
 clearButton.addEventListener('click', clear)
 deleteButton.addEventListener('click', deleteNumber)
-dotButton.addEventListener('click', appendPoint)
+pointButton.addEventListener('click', appendPoint)
 
 numberButtons.forEach((button) =>
-    button.addEventListener('click', () => appendNumber(button.textContent)))
+    button.addEventListener('click', () => appendNumber(button.textContent))
+)
 
-operatorButtons.forEach((button) => button.addEventListener('click', () => setOperation(button.textContent)))
+operatorButtons.forEach((button) =>
+    button.addEventListener('click', () => setOperation(button.textContent))
+)
 
 function appendNumber(number) {
     if (currentOperationScreen.textContent === '0' || shouldResetScreen)
@@ -35,10 +38,10 @@ function resetScreen() {
 }
 
 function clear() {
-    currentOperationScreen.textContent = ''
+    currentOperationScreen.textContent = '0'
     lastOperationScreen.textContent = ''
-    firstNum = ''
-    secondNum = ''
+    firstOperand = ''
+    secondOperand = ''
     currentOperation = null
 }
 
@@ -48,18 +51,19 @@ function appendPoint() {
         currentOperationScreen.textContent = '0'
     if (currentOperationScreen.textContent.includes('.')) return
     currentOperationScreen.textContent += '.'
-
 }
 
 function deleteNumber() {
-    currentOperationScreen.textContent = currentOperationScreen.textContent.toString().slice(0, -1)
+    currentOperationScreen.textContent = currentOperationScreen.textContent
+        .toString()
+        .slice(0, -1)
 }
 
 function setOperation(operator) {
     if (currentOperation !== null) evaluate()
-    firstNum = currentOperationScreen.textContent
+    firstOperand = currentOperationScreen.textContent
     currentOperation = operator
-    lastOperationScreen.textContent = `${firstNum} ${currentOperation}`
+    lastOperationScreen.textContent = `${firstOperand} ${currentOperation}`
     shouldResetScreen = true
 }
 
@@ -69,12 +73,11 @@ function evaluate() {
         alert("You can't divide by 0!")
         return
     }
-    secondNum = currentOperationScreen.textContent
+    secondOperand = currentOperationScreen.textContent
     currentOperationScreen.textContent = roundResult(
-        operate(currentOperation, firstNum, secondNum)
-
+        operate(currentOperation, firstOperand, secondOperand)
     )
-    lastOperationScreen.textContent = `${firstNum} ${currentOperation} ${secondNum} =`
+    lastOperationScreen.textContent = `${firstOperand} ${currentOperation} ${secondOperand} =`
     currentOperation = null
 }
 
@@ -121,7 +124,7 @@ function operate(operator, a, b) {
     switch (operator) {
         case '+':
             return add(a, b)
-        case '-':
+        case '−':
             return substract(a, b)
         case '×':
             return multiply(a, b)

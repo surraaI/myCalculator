@@ -10,25 +10,41 @@
 </head>
 
 <body>
-    <div>
-        <div id="display"></div>
+    <div class="calculator">
+        <div class="screen">
+            <div class="screen-last" id="lastOperationScreen"></div>
+            <div class="screen-current" id="currentOperationScreen">0</div>
+        </div>
+
+
+        <div class="clear">
+            <button id="clear" class="bbb">clear</button>
+            <button id="del" class="bbb">del</button>
+        </div>
         <div id="btns">
+
             <button class="num" value="1">1</button>
             <button class="num" value="2">2</button>
             <button class="num" value="3">3</button>
+            <button class="operator" value='+'>+</button>
             <button class="num" value="4">4</button>
             <button class="num" value="5">5</button>
             <button class="num" value="6">6</button>
+            <button class="operator" value='-'>-</button>
             <button class="num" value="7">7</button>
             <button class="num" value="8">8</button>
             <button class="num" value="9">9</button>
+            <button class="operator" value='*'>*</button>
+            <button id="dot">.</button>
             <button class="num" value="0">0</button>
-            <button class="num operator" value='+'>+</button>
-            <button class="num operator" value='-'>-</button>
-            <button class="num operator" value='*'>*</button>
-            <button class="num operator" value='/'>/</button>
-            <button class="num operator" value='='>=</button>
+
+
+
+            <button class="operator" value='/'>/</button>
+            <button id='equall' value='='>=</button>
         </div>
+
+    </div>
 
     </div>
 
